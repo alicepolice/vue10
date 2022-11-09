@@ -63,22 +63,22 @@ export default defineComponent({
           We’ve reached the part of the year when games start coming out fast`,
           img: require("@/assets/blog/1.jpg"),
         },
-        {
-          title: "Games of the Month: Puzzles!",
-          text: `Sometimes you need a good puzzle game, just something to throw all of
-          your attention at and ignore anything else going on. Well if that
-          sometime for you is right now, then you’re in luck because in this
-          Games of the Month`,
-          img: require("@/assets/blog/2.jpg"),
-        },
-        {
-          title: "The next hapi Creator Day is July 29th!",
-          text: ` I don’t think I’m allowed to make the entire body of this post “The
-          next itch.io Creator Day is taking place on Friday July 29th.” I mean
-          it’s true, we are hosting the next itch.io Creator Day on Friday July
-          29th but I should probably write more here.`,
-          img: require("@/assets/blog/3.jpg"),
-        },
+        // {
+        //   title: "Games of the Month: Puzzles!",
+        //   text: `Sometimes you need a good puzzle game, just something to throw all of
+        //   your attention at and ignore anything else going on. Well if that
+        //   sometime for you is right now, then you’re in luck because in this
+        //   Games of the Month`,
+        //   img: require("@/assets/blog/2.jpg"),
+        // },
+        // {
+        //   title: "The next hapi Creator Day is July 29th!",
+        //   text: `I don’t think I’m allowed to make the entire body of this post “The
+        //   next itch.io Creator Day is taking place on Friday July 29th.” I mean
+        //   it’s true, we are hosting the next itch.io Creator Day on Friday July
+        //   29th but I should probably write more here.`,
+        //   img: require("@/assets/blog/3.jpg"),
+        // },
       ],
       platformNavigation: [
         {
@@ -223,6 +223,34 @@ export default defineComponent({
         ],
       },
     };
+  },
+  created() {
+    this.axios
+      .get("queryGameblog")
+      .then((response) => {
+        if (!response.data) {
+          this.gameBlog = [];
+          return;
+        }
+        this.gameBlog = response.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    this.axios
+      .get("queryGamelist")
+      .then((response) => {
+        if (!response.data) {
+          this.latestGames.games = [];
+          this.mostFeatureGames.games = [];
+          return;
+        }
+        this.latestGames.games = response.data;
+        this.mostFeatureGames.games = response.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
 });
 </script>

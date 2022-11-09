@@ -64,7 +64,7 @@
   </div>
 </template>
 <script lang="ts">
-import { PropType } from "vue";
+import { PropType, defineComponent } from "vue";
 
 interface GameInfo {
   youtube: string;
@@ -75,7 +75,7 @@ interface GameInfo {
   images: string[];
 }
 
-export default {
+export default defineComponent({
   name: "GameInfo",
   props: {
     gameInfo: {
@@ -108,5 +108,5 @@ export default {
       return [this.gameInfo.images[index], this.gameInfo.images[index2]];
     },
   },
-};
+});
 </script>

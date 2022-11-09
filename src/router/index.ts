@@ -3,7 +3,8 @@ import HomeView from '../views/HomeView.vue'
 import LoginViewVue from '@/views/LoginView.vue';
 import RegisterViewVue from '@/views/RegisterView.vue';
 import AboutViewVue from '@/views/AboutView.vue';
-import CommentTestViewVue from '@/views/CommentTestView.vue';
+import CommentView from '@/views/CommentView.vue';
+import GameViewVue from '@/views/GameView.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -38,7 +39,12 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/commentTest',
     name: 'commentTest',
-    component: CommentTestViewVue
+    component: CommentView
+  },
+  {
+    path: '/gameView/:pid',
+    name: 'gameView',
+    component: GameViewVue
   },
 ]
 

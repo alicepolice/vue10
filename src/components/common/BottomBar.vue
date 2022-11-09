@@ -2,22 +2,23 @@
   <div
     class="
       box-border
-      h-16
-      absolute
+      h-14
+      fixed
       container
-      bg-blue-200
       bottom-0
       left-0
       flex flex-nowrap
       items-center
     "
+    :style="{ 'background-color': '#40494B' }"
   >
     <div v-for="(item, index) in items" :key="index" style="width: 100%">
       <router-link :to="{ name: item.routerName }" custom v-slot="{ navigate }">
         <div @click="navigate" class="text-center">
-          <div class="pt-2">
+          <div class="text-white">
             <component :is="item.icon" class="m-auto text-2xl" />
-            <div class="text-lg">
+            <div class="m-1"></div>
+            <div class="text-xs">
               {{ item.text }}
             </div>
           </div>
